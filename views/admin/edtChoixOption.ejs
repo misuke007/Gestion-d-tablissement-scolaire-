@@ -1,0 +1,38 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+
+<div class="content-admin-option">
+
+    <div class="row">
+
+        <div class="text-box col-md-4 ">
+
+            <h2 class="nom_filiere">
+                <%=dataFiliere.nom%>
+            </h2>
+            <div class="underline_filiere"></div>
+            <p class="nbr_etudiant">Choisissez une action: </p>
+            <!-- <a href="/admin/note/ChoixSem/<%=FiliereId%>"> <i class="fa fa-calendar"></i> Choix semestre</a> -->
+            
+
+        </div>
+
+        <div class="form-box col-md-8">
+            <!-- widget à rechercher -->
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <a href="/admin/edt/gerer/choixSemestre/<%=FiliereId%>" class="col-md-5"><div class="optionChoix col-md-12 d-flex justify-content-center align-items-center"><h3><i class="fa   fa-plus-circle"></i>Gérer</h3></div></a>
+        <a href="/admin/edt/voirChoix/choixSemestre/<%=FiliereId%>" class="col-md-5"><div class="optionChoix col-md-12 d-flex justify-content-center align-items-center"><h3><i class="fa  fa-list"></i>Voir EDT</h3></div></a>
+
+    </div>
+
+</div>
+
+
+

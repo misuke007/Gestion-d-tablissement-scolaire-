@@ -1,0 +1,14 @@
+<%if(error != '') { %>
+    <div class="alert alert-danger"><%=error%></div>
+<% } %>
+
+<%if(success != '') { %>
+    <div class="alert alert-success"><%=success%></div>
+<% } %>
+
+<form action="" method="POST">
+    <input type="password" name="current_pass"><br>
+    <input type="password" name="new_pass"><br>
+    <input type="password" name="confirm_new_pass"><br>
+    <button type="submit">Changer</button>
+</form>

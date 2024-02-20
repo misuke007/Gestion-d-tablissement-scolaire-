@@ -1,0 +1,97 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+<div class="content-admin-option">
+
+
+  <div class="row">
+
+      <div class="text-box col-md-4 ">
+
+          <h2 class="nom_filiere">
+              <%=dataFiliere.nom%>
+          </h2>
+          <div class="underline_filiere"></div>
+          <p class="nbr_etudiant"> Cahier de texte semestre <%=SemestreId%>: </p>
+          <a href="/admin/CDT/liste_EC/<%=FiliereId%>/<%=SemestreId%>"> <i class="fa fa-calendar"></i>Liste des EC semestre <%=SemestreId%></a>
+          
+      </div>
+
+      <div class="form-box col-md-8">
+      <!-- widget à rechercher -->
+      </div>
+
+  </div>
+
+
+  <div class="row">
+      <table class="table mt-5">
+          <thead class="thead-dark">
+            <tr>
+              <th scope ="col">Date</th>
+              <th scope ="col">Heure</th>
+              <th scope ="col">Effectif</th>
+              <th scope ="col">Cumulé</th>
+              <th scope ="col">Reste</th>
+              <th scope ="col">Rubrique</th>
+              <th scope ="col">Validation-Prof</th>
+              <th scope ="col">Validation-Etudiant</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <%for(item of data) { %>
+              
+              <tr>
+                <td><%if(formaterDate(item).day < 10 ) { %> 0<%=formaterDate(item).day%> <%  } else { %> <%=formaterDate(item).day%> <% } %> <%=formaterDate(item).month%> <%=formaterDate(item).years%></td>
+                <td><%=item.Heure.valeur%></td>
+                <td><%=item.effectif%>h</td>
+                <td><%=item.cumule%>h</td>
+                <td><%=item.reste%>h</td>
+                <td class="rubrique"><%-item.rubrique%></td>
+                <td><%=item.validationProf%></td>
+                <td><%=item.validationDeleg%></td>
+              </tr>
+        
+            <% } %>  
+
+          </tbody>
+        </table>
+  </div>
+
+</div>
+
+
+
+
+<!-- <table border="1">
+    <thead>
+      <th>Date</th>
+      <th>Heure</th>
+      <th>Effectif</th>
+      <th>Cumulé</th>
+      <th>Reste</th>
+      <th>Rubrique</th>
+      <th>Validation-Prof</th>
+      <th>Validation-Etudiant</th>
+    </thead>
+  
+    <tbody>
+  
+      <%for(item of data) { %>
+  
+        <tr>
+          <td><%=item.createdAt%></td>
+          <td><%=item.Heure.valeur%></td>
+          <td><%=item.effectif%>H</td>
+          <td><%=item.cumule%>H</td>
+          <td><%=item.reste%>H</td>
+          <td><%-item.rubrique%></td>
+          <td><%=item.validationProf%></td>
+          <td><%=item.validationDeleg%></td>
+        </tr>
+  
+      <% } %>  
+    </tbody>
+  </table> -->

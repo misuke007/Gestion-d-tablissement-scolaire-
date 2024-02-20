@@ -1,0 +1,30 @@
+<%if(error != '') { %>
+
+    <div class="alert alert-danger"><%=error%></div>
+
+<% } %>
+
+
+<%if(success != '') { %>
+
+    <div class="alert alert-success"><%=success%></div>
+
+<% } %> 
+
+<form action="" method="POST">
+
+    <input type="hidden" , name="FiliereId" value="<%=FiliereId%>">
+    <input type="hidden" , name="SemestreId" value="<%=SemestreId%>">
+
+
+    <input type="text"  name="nom" value="<%=data.nom%>">
+
+    <select name="semestre" id="">
+
+        <%for(item of semestreData) { %>
+            <option value="<%=item.id%>" <%=data.SemestreId == item.id ? 'selected' : '' %>><%=item.nom%></option>
+        <% } %>   
+
+    </select>
+    <button type="submit">Ajouter</button>
+</form>

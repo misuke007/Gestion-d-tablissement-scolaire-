@@ -1,0 +1,66 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+<div class="content-admin-option">
+    <h2 class="nom_filiere"><%=data.nom%></h2>
+    <div class="underline_filiere"></div>
+
+    <p class="nbr_etudiant">Nombre d'étudiants pour chaque niveau : </p>
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="box-nbr-etudiant col-md-2">
+                <div class="blue"></div>
+                <span>L1</span><br> 
+                 <i class=" fa fa-graduation-cap"> : <%=etudiant_L1.length%> </i> 
+            </div>
+
+            <div class="box-nbr-etudiant col-md-2">
+
+                <div class="blue"></div>
+                <span>L2</span><br> 
+                 <i class=" fa fa-graduation-cap"> :  <%=etudiant_L2.length%> </i>
+                  
+            </div>
+
+
+            <div class="box-nbr-etudiant col-md-2">
+                <div class="blue"></div>
+                <span>L3</span><br> 
+                 <i class=" fa fa-graduation-cap"> :  <%=etudiant_L3.length%></i> 
+            </div>
+
+            <div class="box-nbr-etudiant col-md-2">
+                <div class="blue"></div>
+                <span>M1</span><br> 
+                 <i class=" fa fa-graduation-cap"> :  <%=etudiant_M1.length%> </i> 
+            </div>
+
+            <div class="box-nbr-etudiant col-md-2">
+                <div class="blue"></div>
+                <span>M2</span><br> 
+                 <i class=" fa fa-graduation-cap"> :  <%=etudiant_M2.length%></i> 
+            </div>
+    
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+<%if(error != '') { %>
+    <div class="alert alert-danger"><%=error%></div>
+<% } %> 
+
+
+<form action = "/reset/resetPass/sendCode" method="POST">
+<input type="email" name="email"><br>
+<button type="submit">envoyer le code </button>
+</form>

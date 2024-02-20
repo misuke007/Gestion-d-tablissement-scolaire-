@@ -1,0 +1,55 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+<div class="content-admin-option">
+
+    <div class="row">
+        <div class=" col-md-7 text-box">
+        <h2 class="nom_filiere"><%=dataFiliere.nom%></h2>
+        <div class="underline_filiere"></div>
+        <p class="nbr_etudiant">Choisissez un cahier de texte : </p>
+        <a href="/admin/CDT/semestre/<%=FiliereId%>"> <i class="fa fa-calendar"></i> Choix semestre</a>
+        <a href="/admin/CDT/resetAll_CDT/<%=FiliereId%>/<%=SemestreId%>" class="resetCDT">Réinitialiser le CDT <%=dataSemestre.nom%></a>
+        </div>
+
+        <div class=" form-box col-md-5">
+            <%if(success != '') { %>
+                <div class="col-md-6 notif success d-flex justify-content-center align-items-center"><h3><%=success%></h3></div>
+            <% } %> 
+        </div>
+    </div>
+
+  
+
+    <div class="container">
+
+        <div class="row mt-1 ml-3">
+
+          
+
+            <%if(bigDataEc.length != 0 ) { %>
+                <%for(items of bigDataEc){ for(item of items){ %>
+                    <div class="box-semestre col-md-2 d-flex justify-content-center align-items-center">
+                        <a href="/admin/CDT/voir/<%=FiliereId%>/<%=SemestreId%>/<%=item.id%>"><i class="fa  fa-book "></i><span><%=item.nom%></span></a>
+                    </div>
+                <%}}%>
+            <%} else {%>
+
+                <h3>Il n'y pas encore de matière pour cette semestre</h3>
+
+            <% } %>        
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<!-- <%for(items of bigDataEc){ for(item of items){ %>
+    <a href="/admin/CDT/voir/<%=item.id%>"><%=item.nom%></a><br>
+<%}}%>
+
+ -->

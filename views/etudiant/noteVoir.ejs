@@ -1,0 +1,43 @@
+<%if(UElistId.length != 0) { %>
+    <h1>Notes des élèves</h1>
+    <% for ( let i = 0 ; i < UElistId.length ; i++) { %>
+      <div class="card">
+        <div class="card-header"><%= UElistId[i].UE.nom%></div>
+        <div class="card-body">
+          <% for (item of bigData[i]) {%>
+            <div class="inner-card">
+              <div class="inner-card-header"><%= item.EC.nom %></div>
+              <div class="inner-card-body">
+                Note : <%= item.note %>
+              </div>
+            </div>
+          <% } %>
+          <div class="average">
+            <%let moyenne_ue = dataMoyenneUE[i].Moyenne.toFixed(2) %>
+            <p>Moyenne de l'UE : <%=moyenne_ue%></p>
+          </div>
+        </div>
+      </div>
+    <% } %>
+      <% let moyenne_generale = dataMoyenneG.Moyenne.toFixed(2)%>
+    <h6>Moyenne générale : <b><%=moyenne_generale%></b></h6>
+  
+    <%if( moyenne_generale < 10){ %>
+      <h6>Redouble en <b><%=dataEtudiant.Semestre.nom%></b></h6>
+    <% }else { %>
+
+    <%if(dataRepech.length != 0) { %>
+        <h6>Admis en <b><%=dataEtudiant.Semestre.nom%></b> sous reserve de repêchage</h6>
+        <ul>
+            <%for(item of dataRepech) { %>
+              <li><b><%=item.EC.nom%></b></li>
+              <% } %> 
+          </ul>
+    <% }else{%>
+        <h6>Admis en <b><%=dataEtudiant.Semestre.nom%></b></h6>
+    <% } %>            
+    <% } %>    
+    
+  <% } else{ %>
+    <h2>Note indisponible pour cette semestre!</h2>
+  <% } %>    

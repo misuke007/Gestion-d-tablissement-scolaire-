@@ -1,0 +1,143 @@
+
+
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+
+<div class="content-admin-option">
+
+
+    <div class="row">
+
+        <div class="text-box col-md-4 ">
+
+            <h2 class="nom_filiere">
+                <%=dataFiliere.nom%>
+            </h2>
+            <div class="underline_filiere"></div>
+            <!-- <a href="/admin/note/ChoixSem/<%=FiliereId%>"> <i class="fa fa-calendar"></i> Choix semestre</a> -->
+
+        </div>
+
+        <div class="form-box col-md-8">
+
+            <%if(success != '') { %>
+                <div class="col-md-6 notif success d-flex justify-content-center align-items-center"><h3><%=success%></h3></div>
+            <% } %>   
+            
+            <%if(error != '') { %>
+                <div class="col-md-6 notif d-flex justify-content-center align-items-center"><h3><%=error%></h3></div>
+            <% } %>   
+            
+        </div>
+
+    </div>
+
+
+    <div class="row mt-3 ml-5">
+        <div class="box-list-note col-md-6">
+             <h5>Ajouter un EDT pour la <%=dataSemestre.nom%> :</h5>
+             <div class="indication"></div>
+
+             <form action="" method="POST">
+
+                <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+                <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+                <input type="hidden" name="OptionId" value="<%=OptionId%>">
+            
+            
+                
+                <div class="form">
+                <label for="EC">Choisissez un EC : </label>
+                <select name="ECId" id="EC" class="form-control">
+            
+                   
+                        <%if(bigDataEc.length != 0) { %>
+                            <%for(items of bigDataEc) { for(item of items) { %>
+                                <option value="<%=item.id%>"><%=item.nom%></option>
+                        <%}}%> 
+                        <% }else { %>
+                            <option value="">UE non disponible</option>  
+                        <% } %>              
+
+                </select>
+                </div>
+            
+                <div class="form">
+                <label for="Jour">Jour : </label>
+                <select name="JourId" id="Jour" class="form-control">
+
+                    <%for(item of dataDay) { %>
+                     <option value="<%=item.id%>"><%=item.nom%></option>
+                    <% } %>  
+
+                 </select>
+                </div>
+
+               <div class="form">
+                <label for="Heure">Heure : </label>
+                <select name="HeureId" id="Heure" class="form-control">
+
+                    <%for(item of dataHeure) { %>
+                     <option value="<%=item.id%>"><%=item.valeur%></option>
+                    <% } %>  
+                 </select>
+               </div>
+               
+                <button type="submit">Ajouter</button>
+                
+             </form> 
+
+        </div>
+        <div class="box-option d-flex justify-content-center align-items-center col-md-5">
+
+            <div class="box-items">
+
+             <a href="/admin/edt/gerer/choixSemestre/<%=FiliereId%>"><div class=" box box-semestres d-flex justify-content-center align-items-center"><h5><i class="fa fa-calendar"></i> Choisir Semestre</h5></div></a>
+             <a href="/admin/edt/voir/<%=FiliereId%>/<%=SemestreId%>"><div class=" box box-liste-etudiant d-flex justify-content-center align-items-center"><h5><i class="fa fa-eye"></i> EDT <%=dataSemestre.nom%></h5></div></a>
+
+            </div>
+        </div> 
+     </div>
+
+
+</div>
+
+
+
+<!-- <form action="" method="POST">
+
+    <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+    <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+    <input type="hidden" name="OptionId" value="<%=OptionId%>">
+
+
+
+    <select name="ECId" id="">
+        <option value="" selected>Choisir un EC</option>
+        <%if(bigDataEc.length != 0) { %>
+            <%for(items of bigDataEc) { for(item of items) { %>
+                <option value="<%=item.id%>"><%=item.nom%></option>
+        <%}}%> 
+        <% } %>    
+          
+    </select>
+
+    <select name="JourId" id="">
+
+       <%for(item of dataDay) { %>
+        <option value="<%=item.id%>"><%=item.nom%></option>
+       <% } %>  
+    </select>
+
+    <select name="HeureId" id="">
+
+        <%for(item of dataHeure) { %>
+         <option value="<%=item.id%>"><%=item.valeur%></option>
+        <% } %>  
+     </select>
+     
+     <button type = "submit">Ajouter</button>
+
+</form> -->

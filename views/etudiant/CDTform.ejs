@@ -1,0 +1,74 @@
+<%if(error != '') { %>
+  <div class="alert alert-danger"><%=error%></div>
+<% } %> 
+
+
+<%if(success != '') { %>
+  <div class="alert alert-success"><%=success%></div>
+<% } %> 
+
+<form action="" method="POST">
+
+ <select name="HeureId" id="">
+   <%for(item of dataHeure) { %>
+
+    <option value="<%=item.id%>"><%=item.valeur%></option>
+
+    <% } %>
+ </select><br>
+ 
+ <input type="hidden" name="ECId" value="<%=ECId%>">
+ <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+ <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+
+ <input type="password" name="etudiant_pass"><br>
+ <input type="password" name="prof_pass"><br>
+
+
+<textarea id="editor" name="contenu"></textarea> <!-- Textarea pour CKEditor -->
+  <script>
+    ClassicEditor
+      .create(document.querySelector('#editor')) // Créer un éditeur CKEditor
+      .then(editor => {
+        console.log('Editeur CKEditor initialisé');
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  </script><br>
+  <button type="submit">Ajouter</button>
+
+</form>
+
+
+
+<table border="1">
+  <thead>
+    <th>Date</th>
+    <th>Heure</th>
+    <th>Effectif</th>
+    <th>Cumulé</th>
+    <th>Reste</th>
+    <th>Rubrique</th>
+    <th>Validation-Prof</th>
+    <th>Validation-Etudiant</th>
+  </thead>
+
+  <tbody>
+
+    <%for(item of CDTdata) { %>
+
+      <tr>
+        <td><%=item.createdAt%></td>
+        <td><%=item.Heure.valeur%></td>
+        <td><%=item.effectif%>H</td>
+        <td><%=item.cumule%>H</td>
+        <td><%=item.reste%>H</td>
+        <td><%-item.rubrique%></td>
+        <td><%=item.validationProf%></td>
+        <td><%=item.validationDeleg%></td>
+      </tr>
+
+    <% } %>  
+  </tbody>
+</table>

@@ -1,0 +1,21 @@
+<div class="menuEtudiant">
+
+    <div class = "boxPdpEtudiant">
+        <div class=" pdpEtudiant" style="background-image: url(/user_profil/<%=data.Utilisateur.photo%>);"></div>
+    </div>
+
+
+    <p class="mt-3">Nom : <%=data.Utilisateur.nom%></p>
+    <p>Prenom : <%=data.Utilisateur.prenom%></p>
+    <p>Filière : <%=data.Filiere.nom%></p>
+    <p>Semestre : <%=data.SemestreId%></p>
+
+
+
+    <ul>
+        <li><a href="/etudiant/deconnexion"> <i class=" fa fa-sign-out"></i> Déconnexion</a></li>
+    </ul>
+
+</div>
+
+

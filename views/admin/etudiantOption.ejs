@@ -1,0 +1,53 @@
+
+
+
+
+
+
+
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+<div class="content-admin-option">
+
+    <div class="row">
+
+        <div class="text-box col-md-4 ">
+
+            <h2 class="nom_filiere">
+                <%=dataFiliere.nom%>
+            </h2>
+            <div class="underline_filiere"></div>
+            <p class="nbr_etudiant">Choisissez une action: </p>
+
+        </div>
+
+        <div class="form-box col-md-8">
+            <!-- widget à rechercher -->
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <a href="/admin/etudiant/ajout/choixSem/<%=FiliereId%>" class="col-md-3"><div class="optionChoix col-md-12 d-flex justify-content-center align-items-center"><h3><i class="fa   fa-plus-circle"></i> Ajouter</h3></div></a>
+        <a href="/admin/etudiant/liste/<%=FiliereId%>" class="col-md-3"><div class="optionChoix col-md-12 d-flex justify-content-center align-items-center"><h3><i class="fa  fa-list"></i> Liste </h3></div></a>
+        <a href="/admin/etudiant/nominationDeleg/choixSem/<%=FiliereId%>" class="col-md-3"><div class="optionChoix col-md-12 d-flex justify-content-center align-items-center"><h3><i class="fa  fa-plus-circle"></i>Délégué</h3></div></a>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- <a href="/admin/etudiant/ajout/choixSem/<%=FiliereId%>">Ajouter</a><br>
+<a href="/admin/etudiant/liste/<%=FiliereId%>">Liste</a><br>
+<a href="/admin/etudiant/nominationDeleg/choixSem/<%=FiliereId%>">Nomination Délégué</a> -->

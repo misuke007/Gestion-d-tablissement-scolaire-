@@ -1,0 +1,85 @@
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+ 
+
+
+<%if(UElistId.length != 0) { %>
+  
+  <div class="content-admin-option">
+    <div class="container">
+      <%if(success != '') { %>
+        <div class="alert alert-success"><%=success%></div>
+      <% } %> 
+        <p>Nom et prénom(s) : <%=dataEtudiant.Utilisateur.nom%>   <%=dataEtudiant.Utilisateur.prenom%> </p>
+        <p>Mention : <%=dataFiliere.nom%><p>
+        <p>Note : Semestre <%=SemestreId%></p>
+        <div class="hr"></div>
+
+        <% for ( let i = 0 ; i < UElistId.length ; i++) { %>
+          <div class="card">
+            <div class="card-header"><%= UElistId[i].UE.nom%></div>
+            <div class="card-body">
+              <% for (item of bigData[i]) { %>
+              
+                  
+                <%if(item.note < 10) { %>
+
+                <div class="inner-card" style="background-color: #ff9c9c;">
+
+                <%}else{%>
+
+                <div class="inner-card">
+                  
+                <% } %>    
+                
+                <div class="inner-card-header"><%= item.EC.nom %></div>
+                <div class="inner-card-body">
+                  Note : <%= item.note %>
+                </div>
+              </div>
+              <% } %>
+              <div class="average">
+                <%let moyenne_ue = dataMoyenneUE[i].Moyenne.toFixed(2) %>
+                <p class="mt-3">Moyenne de l'UE : <%=moyenne_ue%></p>
+              </div>
+            </div>
+          </div>
+        <% } %>
+          <% let moyenne_generale = dataMoyenneG.Moyenne.toFixed(2)%>
+        <h6>Moyenne générale : <b><%=moyenne_generale%></b></h6>
+      
+        <%if( moyenne_generale < 10){ %>
+          <h6>Redouble en <b><%=dataEtudiant.Semestre.nom%></b></h6>
+        <% }else { %>
+          <h6>Admis en <b><%=dataEtudiant.Semestre.nom%></b></h6>
+        <% } %>    
+        
+        <h5 class="mt-3">EC à reprendre : </h5>
+      
+        <ul>
+          <%for(item of dataRepech) { %>
+            <li><b><%=item.EC.nom%></b></li>
+            <% } %> 
+        </ul>
+        <br>
+        <a href="/admin/note/Noterepech/<%=FiliereId%>/<%=UtilisateurId%>/<%=SemestreId%>/<%=OptionId%>" class="repechBtn">Noter les EC à repecher</a>
+
+
+     
+
+    </div>
+  </div>
+  
+<% } else{ %>
+ 
+  <div class="content-admin-option">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="noteText mt-5">
+              <h1>Note indisponible pour cette semestre!</h1>
+            </div>
+        </div>
+    </div>
+  </div>
+<% } %>    

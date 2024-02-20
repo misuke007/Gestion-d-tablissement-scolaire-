@@ -1,0 +1,47 @@
+<%-include('navbar')%>
+    <%-include('menuAdmin')%>
+
+
+        <div class="content-admin-option">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-3 pdpBox">
+
+                        <div class="pdp" style="background-image: url(/user_profil/<%=data.Utilisateur.photo%>);"></div>
+                        <div class="hr"></div>
+
+                    </div>
+
+                    <div class="col-md-9 infoBox">
+                        <ul>
+                            <li> <i class="fa fa-user"></i> Nom : <%=data.Utilisateur.nom%></li>
+                            <li> <i class="fa fa-user"></i> Prenom : <%=data.Utilisateur.prenom%></li>
+                            <li> <i class="fa fa-calendar"></i> Date de naissance :<%=data.formatValide%></li>
+                            <li> <i class="fa fa-envelope-o"></i> E-mail : <%=data.Utilisateur.email%></li>
+                            <li><i class="fa fa-map-marker"></i> Adresse : <%=data.Utilisateur.contact%></li>
+                            <li><i class="fa  fa-phone"></i> Téléphone : <%=data.Utilisateur.adresse%></li>
+
+                            <li><i class="fa  fa-graduation-cap"></i> Filière : <%=data.Filiere.nom%></li>
+                            <li> <i class="fa fa-star"></i> Niveau : <%=data.Semestre.nom%></li>
+                            <%if(data.statut !=null) { %>
+                                <li> <i class="fa  fa-star"></i> Statut: * Délégué * </li>
+                            <% } %>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="row mt-3">
+
+                    <%for(item of dataSemestre) { %>
+                        <a href="/admin/note/voir/<%=FiliereId%>/<%=UtilisateurId%>/<%=item.id%>/<%=OptionId%>"
+                            class="col-md-1 note">Note <%=item.nom%></a>
+                        <% } %>
+                </div>
+
+
+            </div>
+        </div>

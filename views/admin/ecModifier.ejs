@@ -1,0 +1,128 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+<div class="content-admin-option">
+
+
+    <div class="row">
+
+        <div class="text-box col-md-4 ">
+
+            <h2 class="nom_filiere">
+                <%=dataFiliere.nom%>
+            </h2>
+            <div class="underline_filiere"></div>
+            <!-- <a href="/admin/note/ChoixSem/<%=FiliereId%>"> <i class="fa fa-calendar"></i> Choix semestre</a> -->
+
+        </div>
+
+        <div class="form-box col-md-8">
+
+            <%if(success != '') { %>
+                <div class="col-md-6 notif success d-flex justify-content-center align-items-center"><h3><%=success%></h3></div>
+            <% } %>   
+            
+            <%if(error != '') { %>
+                <div class="col-md-6 notif d-flex justify-content-center align-items-center"><h3><%=error%></h3></div>
+            <% } %>   
+            
+        </div>
+
+    </div>
+
+
+    <div class="row mt-3 ml-5">
+        <div class="box-list-note col-md-6">
+             <h5>Ajouter un élément constitutif :</h5>
+             <div class="indication"></div>
+
+             <form action="" method="POST">
+
+                <input type = "hidden"  name="FiliereId" value="<%=FiliereId%>">
+                <input type = "hidden"  name="ECId" value="<%=dataEC.id%>">
+            
+                
+                <div class="form">
+                <label for="UE">Choisissez un UE : </label>
+
+                <select name="UEId" id="" class="form-control">
+                    <%for(item of dataUE) { %>
+            
+                        <%if(item.id == dataEC.UEId) { %>
+                            <option value="<%=item.id%>", selected><%=item.nom%></option>
+                        <% }else { %>
+                            <option value="<%=item.id%>"><%=item.nom%></option>
+                        <% } %>        
+                        
+                    <% } %>    
+                </select>
+                </div>
+            
+                <div class="form">
+                <label for="EC">Elément constitutif : </label>
+                <input type="text" name="nom" value="<%=dataEC.nom%>" class="form-control">
+                </div>
+
+               <div class="form">
+                <label for="VH">Volume horaire : </label>
+                <input type="number" name="VH" value="<%=dataEC.VH%>" class="form-control">
+               </div>
+               
+                <button type="submit">Modifier</button>
+                
+             </form> 
+
+        </div>
+        <div class="box-option d-flex justify-content-center align-items-center col-md-5">
+
+            <div class="box-items">
+
+             <a href="/admin/ec/liste/<%=FiliereId%>"><div class=" box box-liste-etudiant d-flex justify-content-center align-items-center"><h5><i class="fa fa-list"></i> Liste des EC</h5></div></a>
+
+            </div>
+        </div> 
+     </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <form action="" method="POST">
+
+        <select name="UEId" id="">
+            <%for(item of dataUE) { %>
+    
+                <%if(item.id == dataEC.UEId) { %>
+                    <option value="<%=item.id%>", selected><%=item.nom%></option>
+                <% }else { %>
+                    <option value="<%=item.id%>"><%=item.nom%></option>
+                <% } %>        
+                
+            <% } %>    
+        </select>
+      
+    <input type = "hidden"  name="FiliereId" value="<%=FiliereId%>">
+    <input type = "hidden"  name="ECId" value="<%=dataEC.id%>">
+    <input type="text" name="nom" value="<%=dataEC.nom%>">
+    <input type="number" name="VH" value="<%=dataEC.VH%>">
+
+    <button type = "submit">mettre à jour</button>
+
+
+</form> -->

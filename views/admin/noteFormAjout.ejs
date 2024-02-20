@@ -1,0 +1,108 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+
+    <div class="content-admin-option">
+
+
+        <div class="row">
+
+            <div class="text-box col-md-4 ">
+
+                <h2 class="nom_filiere">
+                    <%=dataFiliere.nom%>
+                </h2>
+                <div class="underline_filiere"></div>
+                <p class="nbr_etudiant"> Notez <%=dataEtudiant.Utilisateur.nom%> <%=dataEtudiant.Utilisateur.prenom%> pour la semestre <%=SemestreId%> : </p>
+                <!-- <a href="/admin/note/ChoixSem/<%=FiliereId%>"> <i class="fa fa-calendar"></i> Choix semestre</a> -->
+
+            </div>
+
+            <div class="form-box col-md-8">
+
+                <%if(success != '') { %>
+                    <div class="col-md-6 notif success d-flex justify-content-center align-items-center"><h3><%=success%></h3></div>
+                <% } %>   
+                
+                <%if(error != '') { %>
+                    <div class="col-md-6 notif d-flex justify-content-center align-items-center"><h3><%=error%></h3></div>
+                <% } %>   
+                
+            </div>
+
+        </div>
+
+
+        <div class="row d-flex">
+           <div class="box-list-note col-md-5 ml-5">
+                <h5>Liste des matières</h5>
+                <div class="indication"></div>
+
+                <form action="" method="POST">
+
+                    <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+                    <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+                    <input type="hidden" name="UtilisateurId" value="<%=UtilisateurId%>">
+                    <input type="hidden" name="OptionId" value="<%=OptionId%>">
+                
+                
+                    <%for(items of data) {  for(item of items) { %>
+                        <label for=""><%=item.nom%></label>
+                        <input type="hidden" name="UEId" value="<%=item.UE.id%>">
+                        <input type="hidden" name="ECId" value="<%=item.id%>">
+                        <input type="text" name="note" class="form-control" >
+                    <% }} %>   
+                
+                    <button type="submit">valider</button> 
+                </form> 
+
+           </div>
+           <div class="box-option d-flex justify-content-center align-items-center col-md-5">
+
+               <div class="box-items">
+
+                <a href="/admin/note/ChoixSem/<%=FiliereId%>"><div class=" box box-semestres d-flex justify-content-center align-items-center"><h5><i class="fa fa-calendar"></i> Choisir Semestre</h5></div></a>
+                <a href="/admin/note/etudiant/<%=FiliereId%>/<%=SemestreId%>"><div class=" box box-liste-etudiant d-flex justify-content-center align-items-center"><h5><i class="fa fa-list"></i> Liste étudiants S<%=SemestreId%></h5></div></a>
+
+               </div>
+           </div> 
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<form action="" method="POST">
+
+    <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+    <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+    <input type="hidden" name="UtilisateurId" value="<%=UtilisateurId%>">
+    <input type="hidden" name="OptionId" value="<%=OptionId%>">
+
+
+    <%for(items of data) {  for(item of items) { %>
+        <label for=""><%=item.nom%></label>
+        <input type="hidden" name="UEId" value="<%=item.UE.id%>">
+        <input type="hidden" name="ECId" value="<%=item.id%>">
+        <input type="text" name="note" class="form-control">
+    <% }} %>   
+
+    <button type="submit">valider</button> 
+</form>   -->

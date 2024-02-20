@@ -1,0 +1,42 @@
+<%-include('navbar')%>
+
+<div class="menu">
+
+<h3><span class="espace">Espace</span> Admin</h3> 
+
+    <ul>
+        <li> <i class="fa fa-home"></i> <a href="/admin/home">Accueil</a></li>
+        <li> <i class="fa fa-plus"></i> <a href="/admin/ajout_filiere">Ajout filière</a></li>
+        <li><i class="fa  fa-users"></i> <a href="/admin/optionProf">Professeur</a></li>
+    </ul>
+
+</div>
+
+<div class="content">
+
+    <div class="row">
+
+        <% for(item of data) { %>
+            
+            <div class="box-filiere col-md-3">
+            <div class="cursor-indication"></div>
+
+            <div class="box-filiere-bg" style="background-image: url('/user_profil/<%=item.image%>');">
+                <div class="transparent d-flex justify-content-center align-items-center">
+                    <a href="/admin/optionAdmin/<%=item.id%>"><h5><%=item.nom%></h5></a>
+                </div>
+            </div>
+            
+        </div>
+         <% } %>
+
+    </div>
+
+</div>
+
+
+
+
+ 
+
+ 

@@ -1,0 +1,182 @@
+ 
+
+
+ 
+
+
+<!-- <form action="" method="POST">
+    <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+    <input type="search" name="search">
+    <button type = "submit">search</button>
+</form><br>
+
+<a href="/admin/etudiant/liste/delegue/<%=FiliereId%>">Délégué</a>
+
+
+
+<table class="table">
+    <%for(item of data) { %>
+       <tr>
+        <td> <a href="/admin/etudiant/voir/<%=FiliereId%>/<%=item.UtilisateurId%>"><%=item.Utilisateur.nom%>  <%=item.Utilisateur.prenom%></a><br>
+            <%if(item.SemestreId == 1 || item.SemestreId == 2) { %>
+                <p>L1/<%=item.Semestre.nom%></p>
+            <% } %>
+            <%if(item.SemestreId == 3 || item.SemestreId == 4) { %>
+                <p>L2/<%=item.Semestre.nom%></p>
+            <% } %>
+            <%if(item.SemestreId == 5 || item.SemestreId == 6) { %>
+                   
+                <p>
+                    
+                    L3/<%=item.Semestre.nom%><br>
+
+                    <%if(item.SemestreId == 6 ) { %>
+                        <%if(item.OptionId != 0) { %>
+                            Option : <%=item.Option.nom%>
+                        <%}%>    
+                    <% } %>
+                
+                </p>
+            <% } %>  
+            <%if(item.SemestreId == 7 || item.SemestreId == 8) { %>
+                <p>M1/<%=item.Semestre.nom%><br>Option : <%=item.Option.nom%></p>
+            <% } %>  
+
+            <%if(item.SemestreId == 9 || item.SemestreId == 10) { %>
+                <p>M2/<%=item.Semestre.nom%><br>Option : <%=item.Option.nom%></p>
+            <% } %>        
+        </td>
+
+        <td><a href="/admin/etudiant/modifier/<%=FiliereId%>/<%=item.UtilisateurId%>/<%=item.SemestreId%>">Modifier</a></td>
+        <td><a href="/admin/etudiant/supprimer/<%=FiliereId%>/<%=item.UtilisateurId%>/<%=item.SemestreId%>">Supprimer</a></td>
+        
+       </tr>
+    <% } %>   
+</table>
+
+  -->
+
+
+
+  <%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+    <div class="content-admin-option">
+
+
+        <div class="row">
+
+            <div class="text-box col-md-4 ">
+
+                <h2 class="nom_filiere">
+                    <%=dataFiliere.nom%>
+                </h2>
+
+                <div class="underline_filiere"></div>
+                <p class="nbr_etudiant">Liste des étudiants en gestion: </p>
+
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     Trier par semestre
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/1">L1/S1</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/2">L1/S2</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/3">L2/S3</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/4">L2/S4</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/5">L3/S5</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/6">L3/S6</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/7">M1/S7</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/8">M1/S8</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/9">M2/S9</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste_par_niv/<%=FiliereId%>/10">M2/S10</a>
+                      <a class="dropdown-item" href="/admin/etudiant/liste/delegue/<%=FiliereId%>">Délégué</a>
+                    </div>
+                  </div>
+
+                
+
+            </div>
+
+            <div class="form-box col-md-8">
+
+                <form action="" method="POST">
+                    <input type="hidden" name = "FiliereId" value="<%=FiliereId%>">
+                    <input type="text" name="search" placeholder="Recherchez un Etudiant" >
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+
+                <%if(success!= '') { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif-success"><%=success%><br> <%if(pass != '') {%> Mdp : <%=pass%> <%}%></div>
+                <% } %>
+
+                <%if(error != '' ) { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif"><%=error%></div>
+                <% } %>      
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <table class="table col-md-10 mt-5">
+                <thead class="thead-dark">
+
+                  <tr>
+
+                    <th scope="col">Nom & Prenom</th>
+                    <th scope="col"></th>
+                    <th scope="col" class="text-center"></th>
+                    <th scope="col"></th>
+
+                  </tr>
+
+                </thead>
+                <tbody>
+
+                    <%for(item of data) { %>
+                        <tr>
+                         <td><i class="fa fa-user"></i><%=item.Utilisateur.nom%>  <%=item.Utilisateur.prenom%><br>
+                             <%if(item.SemestreId == 1 || item.SemestreId == 2) { %>
+                                 <p>L1/<%=item.Semestre.nom%></p>
+                             <% } %>
+                             <%if(item.SemestreId == 3 || item.SemestreId == 4) { %>
+                                 <p>L2/<%=item.Semestre.nom%></p>
+                             <% } %>
+                             <%if(item.SemestreId == 5 || item.SemestreId == 6) { %>   
+                                 <p>
+                                     
+                                     L3/<%=item.Semestre.nom%><br>
+                 
+                                     <%if(item.SemestreId == 6 ) { %>
+                                         <%if(item.OptionId != 0) { %>
+                                             Option : <%=item.Option.nom%>
+                                         <%}%>    
+                                     <% } %>
+                                 
+                                 </p>
+                             <% } %>  
+                             <%if(item.SemestreId == 7 || item.SemestreId == 8) { %>
+                                 <p>M1/<%=item.Semestre.nom%><br>Option : <%=item.Option.nom%></p>
+                             <% } %>  
+                 
+                             <%if(item.SemestreId == 9 || item.SemestreId == 10) { %>
+                                 <p>M2/<%=item.Semestre.nom%><br>Option : <%=item.Option.nom%></p>
+                             <% } %>        
+                         </td>
+
+                         <td><a href="/admin/etudiant/voir/<%=FiliereId%>/<%=item.UtilisateurId%>">Voir</a></td>
+                         <td><a href="/admin/etudiant/modifier/<%=FiliereId%>/<%=item.UtilisateurId%>/<%=item.SemestreId%>">Modifier</a></td>
+                         <td><a href="/admin/etudiant/supprimer/<%=FiliereId%>/<%=item.UtilisateurId%>/<%=item.SemestreId%>">Supprimer</a></td>
+                         
+                        </tr>
+                     <% } %>   
+
+                 
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+

@@ -1,0 +1,29 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+<div class="content-admin-option">
+
+    <h2 class="nom_filiere"><%=dataFiliere.nom%></h2>
+    <div class="underline_filiere"></div>
+    <p class="nbr_etudiant">Choisissez une semestre : </p>
+
+    <div class="container">
+
+        <div class="row">
+            <%for(item of data ) { %>
+
+            <div class="box-semestre col-md-2 d-flex justify-content-center align-items-center">
+
+                <a href="/admin/note/etudiant/<%=FiliereId%>/<%=item.id%>"><i class="fa fa-calendar "></i><span><%=item.nom%></span></a>
+
+            </div>
+            
+            <% } %>
+            
+        </div>
+
+    </div>
+
+
+</div>

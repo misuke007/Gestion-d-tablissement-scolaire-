@@ -1,0 +1,62 @@
+<!-- <h5><%=data.nom%> <%=data.prenom%></h5><br>
+<h5><%=data.email%></h5><br>
+<h5><%=data.contact%></h5><br>
+
+<%if(user.badge == 'FINANCE') { %>
+    <a href="/admin/professeur/voir_etat/<%=data.num_matricule%>">Etat</a>
+<% } %>     -->
+
+
+
+
+
+
+<!--  -->
+
+
+
+
+<%-include('navbar')%>
+<div class="menu">
+
+    <h3><span class="espace">Espace</span> Admin</h3> 
+    
+        <ul>
+
+            <li> <i class="fa fa-home"></i> <a href="/admin/home">Accueil</a></li>
+            <li> <i class="fa fa-plus"></i> <a href="/admin/ajout_filiere">Ajout filière</a></li>
+            <li><i class="fa  fa-users"></i> <a href="/admin/optionProf">Professeur</a></li>
+        </ul>
+    
+</div>
+
+
+        <div class="content-admin-option">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-3 pdpBox">
+
+                        <div class="pdp" style="background-image: url(/user_profil/<%=data.photo%>);"></div>
+                        <div class="hr"></div>
+
+                    </div>
+
+                    <div class="col-md-9 infoBox">
+                        <ul>
+                            <li> <i class="fa fa-user"></i> Nom & prénom(s) : <%=data.nom%> <%=data.prenom%></li>                           
+                            <li> <i class="fa fa-envelope-o"></i> E-mail : <%=data.email%></li>
+                            <li><i class="fa  fa-phone"></i> Téléphone : <%=data.adresse%></li>
+                            <li class="matiere">Matière(s) enseignée(s) : <%for(item of ECprof) { %> <a href="#"><%=item.nom%></a> <%}%></li>
+                        </ul>
+
+                    
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+

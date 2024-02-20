@@ -1,0 +1,146 @@
+
+
+
+
+
+
+
+
+
+
+
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+
+    <div class="content-admin-option">
+
+
+        <div class="row">
+
+            <div class="text-box col-md-4 ">
+
+                <h2 class="nom_filiere">
+                    <%=dataFiliere.nom%>
+                </h2>
+                <div class="underline_filiere"></div>
+
+            </div>
+
+            <div class="form-box col-md-8">
+
+                <%if(success != '') { %>
+                    <div class="col-md-6 notif success d-flex justify-content-center align-items-center"><h3><%=success%></h3></div>
+                <% } %>   
+                
+                <%if(error != '') { %>
+                    <div class="col-md-6 notif d-flex justify-content-center align-items-center"><h3><%=error%></h3></div>
+                <% } %>   
+                
+            </div>
+
+        </div>
+
+
+        <div class="row d-flex">
+
+           <div class="box-list-note col-md-5 ml-5 mt-5">
+                <h5>Ajoutez un étudiant</h5>
+                <div class="indication"></div>
+
+
+                <form action="" method="POST" enctype="multipart/form-data">
+
+                    <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+                    <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+                    <input type="hidden" name="OptionId" value="<%=OptionId%>">
+          
+                    <label for="photo">
+                    <div class=" prevImage d-flex justify-content-center align-items-center">
+                        <i class="fa fa-camera camera-input-file"></i>
+                    </div>
+                    </label><br>
+
+                    <label>Nom: </label>
+                    <input type="file" id="photo" name = "photo" hidden class = "filesInput">
+                    <input type="text" name="nom" class="form-control">
+                    <label>Prénom: </label>
+
+                    <input type="text" name="prenom" class="form-control">
+                    <label>E-mail: </label>
+
+                    <input type="email" name="email" class="form-control">
+                    <label>Contact: </label>
+
+                    <input type="text" name="contact" class="form-control">
+                    <label>Adresse: </label>
+
+                    <input type="text" name="adresse" class="form-control">
+                    <label>Date de naissance: </label>
+
+                    <input type="date" name="date_de_naissance" class="form-control">
+                    <button type="submit">Ajouter</button> 
+
+              
+
+                </form>
+
+                
+
+           </div>
+
+           <div class="box-option d-flex justify-content-center align-items-center col-md-5">
+
+               <div class="box-items">
+
+                <a href="/admin/etudiant/ajout/choixSem/<%=FiliereId%>"><div class=" box box-semestres d-flex justify-content-center align-items-center"><h5><i class="fa fa-calendar"></i> Choisir Semestre</h5></div></a>
+
+               </div>
+           </div> 
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%if(error != '') { %>
+    <div class="alert alert-danger"><%=error%></div>
+<% } %>    
+
+<%if(success != '') { %>
+    <div class="alert alert-success"><%=success%></div>
+<% } %>    
+
+<%if(pass != '') { %>
+    <div class="alert alert-success"><%=pass%></div>
+<% } %>     -->
+
+
+<!-- <form action="" method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+    <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+    <input type="hidden" name="OptionId" value="<%=OptionId%>">
+
+
+    <input type="text" name="nom"><br>
+    <input type="text" name="prenom"><br>
+    <input type="email" name="email"><br>
+    <input type="text" name="contact"><br>
+    <input type="text" name="adresse"><br>
+    <input type="date" name="date_de_naissance"><br>
+    <input type="file" name="photo"><br>
+
+    <button type="submit">Enregistrer</button>
+
+
+</form> -->

@@ -1,0 +1,85 @@
+
+<%if(pass != '') { %>
+    <div class="alert alert-success"><%=pass%></div>
+<% } %>    
+
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+
+<div class="content-admin-option">
+
+
+    <div class="row">
+
+        <div class="text-box col-md-4 ">
+
+            <h2 class="nom_filiere">
+                <%=dataFiliere.nom%>
+            </h2>
+            <div class="underline_filiere"></div>
+
+        </div>
+
+        <div class="form-box col-md-8">
+
+            <%if(success != '') { %>
+                <div class="col-md-6 notif success d-flex justify-content-center align-items-center"><h3><%=success%></h3></div>
+            <% } %>   
+            
+            <%if(error != '') { %>
+                <div class="col-md-6 notif d-flex justify-content-center align-items-center"><h3><%=error%></h3></div>
+            <% } %>   
+            
+        </div>
+
+    </div>
+
+
+    <div class="row d-flex">
+
+       <div class="box-list-note col-md-8 ml-5 mt-5">
+            <h5>Modification</h5>
+            <div class="indication"></div>
+
+            <form action="" method="POST" enctype="multipart/form-data">
+
+                <input type="hidden" name="UtilisateurId" value="<%=UtilisateurId%>">
+                <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+      
+                <label for="photo">
+                <div class=" prevImage d-flex justify-content-center align-items-center" style="background-image: url('/user_profil/<%=data.Utilisateur.photo%>');">
+                    <i class="fa fa-camera cam_inputMaj" ></i>
+                </div>
+                </label><br>
+
+                <label>Nom: </label>
+                <input type="file" id="photo" name = "photo" hidden class = "filesInput">
+                <input type="text" name="nom" class="form-control" value="<%=data.Utilisateur.nom%>">
+                <label>Prénom: </label>
+
+                <input type="text" name="prenom" class="form-control" value="<%=data.Utilisateur.prenom%>">
+                <label>E-mail: </label>
+
+                <input type="email" name="email" class="form-control" value="<%=data.Utilisateur.email%>">
+                <label>Contact: </label>
+
+                <input type="text" name="contact" class="form-control" value="<%=data.Utilisateur.contact%>">
+                <label>Adresse: </label>
+
+                <input type="text" name="adresse" class="form-control" value="<%=data.Utilisateur.adresse%>">
+                <label>Date de naissance: </label>
+
+                <input type="date" name="date_de_naissance" class="form-control" value="<%=isoDate%>">
+                <button type="submit">Enregistrer</button> 
+
+            </form>
+
+       </div>
+    </div>
+
+</div>
+
+
+

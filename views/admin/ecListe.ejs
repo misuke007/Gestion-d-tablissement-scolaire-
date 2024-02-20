@@ -1,0 +1,171 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+    <div class="content-admin-option">
+
+
+        <div class="row">
+
+            <div class="text-box col-md-4 ">
+
+                <h2 class="nom_filiere">
+                    <%=dataFiliere.nom%>
+                </h2>
+
+                <div class="underline_filiere"></div>
+                <p class="nbr_etudiant">Liste des éléments constitutifs : </p>
+
+            </div>
+
+            <div class="form-box col-md-8">
+
+                <form action="" method="POST">
+                    <input type="hidden" name = "FiliereId" value="<%=FiliereId%>">
+                    <input type="text" name="search" placeholder="Recherchez un EC" >
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+
+                <%if(success!= '') { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif-success"><%=success%></div>
+                <% } %>
+
+                <%if(error != '' ) { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif"><%=error%></div>
+                <% } %>     
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <table class="table col-md-10">
+                <thead class="thead-dark">
+
+                  <tr>
+
+                    <th scope="col">Intitule</th>
+                    <th scope="col"></th>
+                    <th scope="col" class="text-center"></th>
+                    <th scope="col"></th>
+
+                  </tr>
+
+                </thead>
+                <tbody>
+
+                    <%for(item of data) { %>
+                        <tr>
+
+                            <td class=""><i class="fa  fa-file-text-o "></i><%=item.nom%></td>
+                            <td><a href="/admin/ec/voir/<%=item.id%>/<%=item.UE.SemestreId%>/<%=FiliereId%>">Voir</a></td>
+                            <td><a href="/admin/ec/modifier/<%=item.id%>/<%=item.UE.SemestreId%>/<%=FiliereId%>">Modifier</a></td>
+                            <td><a href="/admin/ec/supprimer/<%=item.id%>/<%=FiliereId%>">Supprimer</a></td>
+                
+                        </tr>
+                    <% } %>    
+                 
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%if(error != '' ) { %>
+    <div class="alert alert-danger"><%=error%></div>
+<% } %>  
+
+
+<%if(success != '' ) { %>
+    <div class="alert alert-success"><%=success%></div>
+<% } %> 
+
+<form action="" method="POST">
+
+    <input type="hidden" name = "FiliereId" value="<%=FiliereId%>">
+    <input type="text" name="search">
+    <button type="submit">Search</button>
+
+</form>
+
+<table class="table">
+
+    <%for(item of data) { %>
+        <tr>
+            <td>
+
+                <%if(item.UE.SemestreId == 1 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : L1/S1</p>
+                <% } %>
+
+                <%if(item.UE.SemestreId == 2 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : L1/S2</p>
+                <% } %>   
+
+                <%if(item.UE.SemestreId == 3 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : L2/S3</p>
+                <% } %>   
+
+                <%if(item.UE.SemestreId == 4 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : L2/S4</p>
+                <% } %>  
+
+                <%if(item.UE.SemestreId == 5 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : L3/S5</p>
+                <% } %> 
+
+                <%if(item.UE.SemestreId == 6 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : L3/S6<br> option :  <%=item.UE.Option.nom%></p>
+                <% } %> 
+
+                <%if(item.UE.SemestreId == 7 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : M1/S7<br> option :  <%=item.UE.Option.nom%></p>
+                <% } %>   
+
+                <%if(item.UE.SemestreId == 8 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : M1/S8<br> option :  <%=item.UE.Option.nom%></p>
+                <% } %>   
+
+                <%if(item.UE.SemestreId == 9 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : M2/S9<br> option :  <%=item.UE.Option.nom%></p>
+                <% } %>  
+
+                <%if(item.UE.SemestreId == 10 ){ %>
+                    <%=item.nom%><br>
+                    <p>UE : <%=item.UE.nom%><br>Niveau : M2/S10<br> option :  <%=item.UE.Option.nom%></p>
+                <% } %>       
+
+            </td>
+
+            <td><a href="/admin/ec/voir/<%=item.id%>/<%=item.UE.SemestreId%>/<%=FiliereId%>">Voir</a></td>
+            <td><a href="/admin/ec/modifier/<%=item.id%>/<%=item.UE.SemestreId%>/<%=FiliereId%>">Modifier</a></td>
+            <td><a href="/admin/ec/supprimer/<%=item.id%>/<%=FiliereId%>">Supprimer</a></td>
+
+        </tr>
+    <% } %>    
+</table> -->

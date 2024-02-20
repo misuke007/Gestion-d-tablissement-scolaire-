@@ -1,0 +1,75 @@
+
+<%if(success != '') { %>
+    <div class=" alert alert-success"><%=success%></div>
+<% } %>    
+
+
+
+<table border="1">
+    <thead>
+        <th>Filiere</th>
+        <th>Niveau</th>
+        <th>UE</th>
+        <th>EC</th>
+        <th>Professeur</th>
+        <th>Total(H)</th>
+        <th>PU</th>
+        <th>Montant</th>
+
+
+
+        
+    </thead>
+
+    <tbody>
+        <%for(item of data) { %>
+            <tr>
+                <td><%=item.Filiere.nom%></td>
+                <td>
+                    <%if(item.Semestre.id == 1 || item.Semestre.id == 2) { %>
+                        <p>L1</p>
+                    <% } %>
+
+                    <%if(item.Semestre.id == 3 || item.Semestre.id == 4) { %>
+                        <p>L2</p>
+                    <% } %> 
+                    
+                    <%if(item.Semestre.id == 5 || item.Semestre.id == 6) { %>
+                        <p>
+                            
+                            L3<br>
+                            <%if(item.Semestre.id == 6) { %>
+                               Option :  <%=item.UE.Option.nom%>
+                            <% } %>    
+
+                        </p>
+                    <% } %> 
+
+                    <%if(item.Semestre.id == 7 || item.Semestre.id == 8) { %>
+                        <p>M1<br> Option :  <%=item.UE.Option.nom%></p>
+                    <% } %> 
+
+                    <%if(item.Semestre.id == 9 || item.Semestre.id == 10) { %>
+                        <p>M2<br> Option :  <%=item.UE.Option.nom%></p>
+                    <% } %> 
+                </td>
+                <td><%=item.UE.nom%></td>
+                <td><%=item.EC.nom%></td>
+                <td><%=item.prof_matricule%></td>
+                <td><%=item.TotalHeure%>H</td>
+                <td><%=item.PU%> AR</td>
+                <td><%=item.Montant%>AR</td>
+
+            </tr>
+        <% } %>
+        <tr>
+            <td>Total à payer : <b><%=Montant_total%> AR</b></td>
+        </tr>    
+    </tbody>
+</table>
+
+
+<a href="/admin/professeur/importer/<%=prof_matricule%>">Importer en excel</a><br>
+<a href="/admin/professeur/Validation/<%=prof_matricule%>">Validé</a><br>
+
+

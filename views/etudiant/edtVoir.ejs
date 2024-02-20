@@ -1,0 +1,104 @@
+<%if(neant) { %>
+    <center><h1>Il n'y a pas encore d'emploi du temps disponible</h1></center>
+<% } else{ %>
+    <center><h1>EDT semaine du <%=dateEDT.day%> <%=dateEDT.month%></h1></center>
+
+    
+    <div class="row cont">
+
+        <div class="box col-2" id="lundi">
+            <p class="text-center">Lundi</p>
+    
+            <%if(jour1.length != 0) { %>
+    
+                <%for(item of jour1) { %>
+                    <p><%=item.nom%></p>
+                    <p><%=item.heure%></p>
+                <% } %>  
+    
+            <% }else { %>
+    
+                <p>pas de cours</p>
+    
+            <% } %>        
+        </div>
+    
+        <div class="box col-2" id="mardi">
+            <p class="text-center">Mardi</p>
+    
+            <%if(jour2.length != 0) { %>
+    
+                <%for(item of jour2) { %>
+                    <p><%=item.nom%></p>
+                    <p><%=item.heure%></p>
+                    
+    
+    
+                <% } %>  
+    
+            <% }else { %>
+    
+                <p>pas de cours</p>
+    
+            <% } %>       
+        </div>
+    
+        <div class="box col-2" id="mercredi">
+            <p class="text-center">Mercredi</p>
+    
+            <%if(jour3.length != 0) { %>
+    
+                <%for(item of jour3) { %>
+                    <p><%=item.nom%></p>
+                    <p><%=item.heure%></p>
+                   
+    
+    
+                <% } %>  
+    
+            <% }else { %>
+    
+                <p>pas de cours</p>
+    
+            <% } %>       
+        </div>
+    
+        <div class="box col-2" id="jeudi">
+            <p class="text-center">Jeudi</p>
+    
+            <%if(jour4.length != 0) { %>
+    
+                <%for(item of jour4) { %>
+                    <p><%=item.nom%></p>
+                    <p><%=item.heure%></p>
+    
+    
+                <% } %>  
+    
+            <% }else { %>
+    
+                <p>pas de cours</p>
+    
+            <% } %>       
+        </div>
+    
+        <div class="box col-2" id="vendredi">
+            <p class="text-center">Vendredi</p>
+    
+            <%if(jour5.length != 0) { %>
+    
+                <%for(item of jour5) { %>
+                    <p><%=item.nom%></p>
+                    <p><%=item.heure%></p>
+                <% } %>  
+    
+            <% }else { %>
+    
+                <p>pas de cours</p>
+    
+            <% } %>       
+        </div>
+    </div>
+    
+  
+<% } %>        

@@ -1,0 +1,60 @@
+
+
+
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+    <div class="content-admin-option">
+
+
+        <div class="row">
+
+            <div class="text-box col-md-4 ">
+
+                <h2 class="nom_filiere">
+                    <%=dataFiliere.nom%>
+                </h2>
+
+                <div class="underline_filiere"></div>
+                <p class="nbr_etudiant">Ajouter un UE pour la semestre <%=SemestreId%></p>
+
+            </div>
+
+            <div class="form-box col-md-8">
+
+                <%if(success!= '') { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif-success"><%=success%></div>
+                <% } %>
+
+                <%if(error != '' ) { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif"><%=error%></div>
+                <% } %>     
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+
+            <form action="" method="POST" class="nbr_etudiant">
+
+                <input type="hidden" , name="FiliereId" value="<%=FiliereId%>">
+                <input type="hidden" , name="SemestreId" value="<%=SemestreId%>">
+                <input type="hidden" , name="OptionId" value="<%=OptionId%>">
+            
+             
+               
+                <input type="text"  name="nom" class="addUE">
+                <button type="submit" class="mt-2 btnNoteRepech">Ajouter</button>
+               
+             
+
+            </form> 
+            
+            
+        </div>
+
+    </div>
+

@@ -1,0 +1,103 @@
+
+
+<%-include('navbar')%>
+<div class="menu">
+
+    <h3><span class="espace">Espace</span> Admin</h3> 
+    
+        <ul>
+
+            <li> <i class="fa fa-home"></i> <a href="/admin/home">Accueil</a></li>
+            <li> <i class="fa fa-plus"></i> <a href="/admin/ajout_filiere">Ajout filière</a></li>
+            <li><i class="fa  fa-users"></i> <a href="/admin/optionProf">Professeur</a></li>
+        </ul>
+    
+    </div>
+
+    <div class="content-admin-option">
+
+
+        <div class="row">
+
+            <div class="text-box col-md-4 ">
+
+                <h2 class="nom_filiere">Professeur</h2>
+                <div class="underline_filiere"></div>
+
+                
+                <p class="nbr_etudiant"> 
+
+                    <%if(dataResult.length > 0 ){ %>
+
+                    <%if(dataResult.length > 1){ %>
+                        Vous avez <%=dataResult.length%> résultats
+                    <%}else{%>
+                        Vous avez <%=dataResult.length%> résultat
+                    <% } %>        
+
+                    <% }else{%>
+                        Aucun professeur ne correspond à votre recherche
+                    <% } %>        
+
+                </p>
+
+            </div>
+
+            <div class="form-box col-md-8">
+
+                    <div class="row">
+
+                        <form action = "/admin/professeur/liste" method="POST" class="col-md-12">
+                            <input type="text" name="search" placeholder="Recherchez un Prof" >
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+
+                    </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <table class="table col-md-10">
+                <thead class="thead-dark">
+
+                  <tr>
+
+                    <th scope="col">Nom & Prénom(s)</th>
+                    <th scope="col"></th>
+                    <th scope="col" class="text-center"></th>
+                    <th scope="col"></th>
+
+                  </tr>
+
+                </thead>
+                <tbody>
+
+                    <%for(item of dataResult) { %>
+                        <tr>
+                            <td><a href="/admin/professeur/voir/<%=item.id%>" class="nomProf"><i class="fa fa-user"></i> <%=item.nom%> <%=item.prenom%></a></td>
+                
+                            <%if(user.badge == 'ADMIN') { %>
+                
+                            <td><a href="/admin/professeur/modifier/<%=item.id%>">Modifier</a></td>
+                            <td><a href="/admin/professeur/supprimer/<%=item.id%>">Supprimer</a></td>
+                            
+                            <% } %>    
+                        </tr>
+                    <% } %> 
+                 
+                </tbody>
+              </table>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+

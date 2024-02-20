@@ -1,0 +1,174 @@
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+
+
+
+<div class="content-admin-option">
+
+
+    <div class="row">
+
+        <div class="text-box col-md-4 ">
+
+            <h2 class="nom_filiere">
+                <%=dataFiliere.nom%>
+            </h2>
+
+            <div class="underline_filiere"></div>
+
+            <%if(dateEDT) { %>
+                <p class="nbr_etudiant">Emploi du temps (<%=dataSemestre.nom%>) semaine du <%=dateEDT.day%> <%=dateEDT.month%></p>
+            <% }else{%>
+                <p class="nbr_etudiant">Emploi du temps pour la <%=dataSemestre.nom%></p>
+            <% } %>     
+            
+
+        </div>
+
+        <div class="form-box col-md-8 di">
+            <%if(error != '') { %>
+                <div class="alert alert-danger text-center "><%=error%></div>
+            <% } %>
+            
+            
+            
+            <%if(success != '') { %>
+                <div class="alert alert-success text-center "><%=success%></div>
+            <% } %>
+   
+            <form action="" method="POST">
+
+                <input type="hidden" name="FiliereId" value="<%=FiliereId%>">
+                <input type="hidden" name="SemestreId" value="<%=SemestreId%>">
+                <input type="hidden" name="OptionId" value="<%=OptionId%>">
+            
+            
+                <input type="date" name="date"><br>
+                <%if(!dateEDT) { %> <button type="submit" class="btn-date">publier</button><%}%>
+            
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <div class="row cont mt-5">
+
+    <div class="box col-md-2" id="lundi">
+        <h6 class="text-center">Lundi</h6>
+
+        <%if(jour1.length != 0) { %>
+
+            <%for(item of jour1) { %>
+                <p><%=item.nom%><br>(<%=item.heure%>)</p>
+             
+                <%if(!dateEDT) { %>
+                    <a href="/admin/edt/supprimer/<%=FiliereId%>/<%=SemestreId%>/<%=item.jourId%>/<%=item.id%>/<%=OptionId%>">Supprimer</a>
+                <% } %>
+            <% } %>  
+
+        <% }else { %>
+
+            <p>pas de cours</p>
+
+        <% } %>        
+    </div>
+
+    <div class="box  col-md-2" id="mardi">
+        <h6 class="text-center">Mardi</h6>
+
+        <%if(jour2.length != 0) { %>
+
+            <%for(item of jour2) { %>
+                <p><%=item.nom%><br>(<%=item.heure%>)</p>
+
+                <%if(!dateEDT) { %>
+                    <a href="/admin/edt/supprimer/<%=FiliereId%>/<%=SemestreId%>/<%=item.jourId%>/<%=item.id%>/<%=OptionId%>">Supprimer</a>
+                <% } %>
+
+            <% } %>  
+
+        <% }else { %>
+
+            <p>pas de cours</p>
+
+        <% } %>       
+    </div>
+
+    <div class="box  col-md-2" id="mercredi">
+        <h6 class="text-center">Mercredi</h6>
+
+        <%if(jour3.length != 0) { %>
+
+            <%for(item of jour3) { %>
+                <p><%=item.nom%><br>(<%=item.heure%>)</p>
+
+                <%if(!dateEDT) { %>
+                    <a href="/admin/edt/supprimer/<%=FiliereId%>/<%=SemestreId%>/<%=item.jourId%>/<%=item.id%>/<%=OptionId%>">Supprimer</a>
+                <% } %>
+
+            <% } %>  
+
+        <% }else { %>
+
+            <p>pas de cours</p>
+
+        <% } %>       
+    </div>
+
+    <div class="box  col-md-2" id="jeudi">
+        <h6 class="text-center">Jeudi</h6>
+
+        <%if(jour4.length != 0) { %>
+
+            <%for(item of jour4) { %>
+                <p><%=item.nom%><br>(<%=item.heure%>)</p>
+                <%if(!dateEDT) { %>
+                    <a href="/admin/edt/supprimer/<%=FiliereId%>/<%=SemestreId%>/<%=item.jourId%>/<%=item.id%>/<%=OptionId%>">Supprimer</a>
+                <% } %>    
+
+
+            <% } %>  
+
+        <% }else { %>
+
+            <p>pas de cours</p>
+
+        <% } %>       
+    </div>
+
+    <div class="box  col-md-2" id="vendredi">
+        <h6 class="text-center">Vendredi</h6>
+
+        <%if(jour5.length != 0) { %>
+
+            <%for(item of jour5) { %>
+                <p><%=item.nom%><br>(<%=item.heure%>)</p>
+                <%if(!dateEDT) { %>
+                    <a href="/admin/edt/supprimer/<%=FiliereId%>/<%=SemestreId%>/<%=item.jourId%>/<%=item.id%>/<%=OptionId%>">Supprimer</a>
+                <% } %>
+
+            <% } %>  
+
+        <% }else { %>
+
+            <p>pas de cours</p>
+
+        <% } %>       
+    </div>
+</div>
+
+<div class="row">
+    <a href="/admin/edt/supprimerEdt/<%=FiliereId%>/<%=SemestreId%>/<%=OptionId%>" class="btn-date ">Supprimer l'Edt</a><br>
+    <a href="/admin/edt/ajout/<%=FiliereId%>/<%=SemestreId%>" class="btn-date ajout">Ajouter</a>
+</div>
+
+
+</div>
+
+
+
+
+

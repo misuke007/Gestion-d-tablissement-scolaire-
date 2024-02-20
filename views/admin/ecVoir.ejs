@@ -1,0 +1,159 @@
+
+<%-include('navbar')%>
+<%-include('menuAdmin')%>
+
+    <div class="content-admin-option">
+
+
+        <div class="row">
+
+            <div class="text-box col-md-4 ">
+
+                <h2 class="nom_filiere">
+                    <%=dataFiliere.nom%>
+                </h2>
+
+                <div class="underline_filiere"></div>
+                <p class="nbr_etudiant">A propos de l'EC: </p>
+                <a href="/admin/ec/liste/<%=FiliereId%>"> <i class="fa fa-list"></i> Retour à la liste</a>
+
+            </div>
+
+            <div class="form-box col-md-8">
+
+                <%if(success!= '') { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif-success"><%=success%></div>
+                <% } %>
+
+                <%if(error != '' ) { %>
+                    <div class="text-center d-flex justify-content-center align-items-center notif"><%=error%></div>
+                <% } %>     
+
+            </div>
+
+        </div>
+
+
+        <div class="row mt-5">
+            
+            <div class="box-ec col-md-6">
+               <h5> Elément constitutif : <span><%=data.nom%></span> </h5>
+               <h5> Unité d'enseignement : <span><%=data.UE.nom%></span> </h5>
+             <%if(dataOption.OptionId != 0) { %>
+                <h5>Option : <span><%=dataOption.Option.nom%></span></h5>
+             <% } %>   
+
+            <%if(data.UE.SemestreId == 1 ){ %>
+                <h5> Niveau : <span>L1/S1</span> </h5>
+            <% } %>
+            
+            <%if(data.UE.SemestreId == 2 ){ %>
+                <h5> Niveau : <span>L1/S2</span> </h5>
+            <% } %>   
+            
+            <%if(data.UE.SemestreId == 3 ){ %>
+                <h5> Niveau : <span>L2/S3</span> </h5>
+            <% } %>   
+            
+            <%if(data.UE.SemestreId == 4 ){ %>
+                <h5> Niveau : <span>L2/S4</span> </h5>
+            <% } %>  
+            
+            <%if(data.UE.SemestreId == 5 ){ %>
+                <h5> Niveau : <span>L3/S5</span> </h5>
+            <% } %> 
+            
+            <%if(data.UE.SemestreId == 6 ){ %>
+                <h5> Niveau : <span>L3/S6</span> </h5>
+            <% } %> 
+            
+            <%if(data.UE.SemestreId == 7 ){ %>
+                <h5> Niveau : <span>M1/S7</span> </h5>
+            <% } %>   
+            
+            <%if(data.UE.SemestreId == 8 ){ %>
+                <h5> Niveau : <span>M1/S8</span> </h5>
+            <% } %>   
+            
+            <%if(data.UE.SemestreId == 9 ){ %>
+                <h5> Niveau : <span>M2/S9</span> </h5>
+            <% } %>  
+            
+            <%if(data.UE.SemestreId == 10 ){ %>
+                <h5> Niveau : <span>M2/S10</span> </h5>
+            <% } %>
+            
+            <h5> Volume horaire : <span><%=data.VH%> heures</span> </h5>
+             
+            <%if(data.UtilisateurId !== null) { %>
+               
+                <h5> Professeur : <span> <%=data.Utilisateur.nom%> <%=data.Utilisateur.prenom%> <a href="/admin/professeur/enlever/<%=data.id%>/<%=FiliereId%>/<%=SemestreId%>/<%=data.Utilisateur.id%>" class="assignation">Désassigner</a></span></span> </h5>
+            <% }else{ %>
+                <h5> Professeur : <span>Néant</span> </h5>
+            <% } %>   
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%if(success != '') { %>
+    <div class="alert alert-success"><%=success%></div>
+<% } %>    
+
+<p>Nom : <%=data.nom%></p>
+<%if(data.UtilisateurId !== null) { %>
+    <p>Prof : <%=data.Utilisateur.nom%> <%=data.Utilisateur.prenom%> <span><a href="/admin/professeur/enlever/<%=data.id%>/<%=FiliereId%>/<%=SemestreId%>/<%=data.Utilisateur.id%>">Enlever</a></span> </p>
+<% }else{ %>
+    <p>Prof : Néant</p>
+<% } %>        
+<%if(data.UE.SemestreId == 1 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : L1/S1</p>
+<% } %>
+
+<%if(data.UE.SemestreId == 2 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : L1/S2</p>
+<% } %>   
+
+<%if(data.UE.SemestreId == 3 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : L2/S3</p>
+<% } %>   
+
+<%if(data.UE.SemestreId == 4 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : L2/S4</p>
+<% } %>  
+
+<%if(data.UE.SemestreId == 5 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : L3/S5</p>
+<% } %> 
+
+<%if(data.UE.SemestreId == 6 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : L3/S6</p>
+<% } %> 
+
+<%if(data.UE.SemestreId == 7 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : M1/S7</p>
+<% } %>   
+
+<%if(data.UE.SemestreId == 8 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : M1/S8</p>
+<% } %>   
+
+<%if(data.UE.SemestreId == 9 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : M2/S9</p>
+<% } %>  
+
+<%if(data.UE.SemestreId == 10 ){ %>
+    <p>UE : <%=data.UE.nom%><br>Niveau : M2/S10</p>
+<% } %>    -->

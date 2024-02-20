@@ -1,0 +1,13 @@
+<%if(error!= '') { %>
+    <div class="alert alert-danger"><%=error%></div>
+<% } %>    
+
+<form action="/reset/resetPass/verificationCode" method="POST">
+
+    <input type="hidden" name="email" value="<%=email%>">
+    <input type="text" name="token"><br>
+    <button type="submit">Vérifier</button>
+    
+</form>
+
+<a href="/reset/resendMail/<%=email%>">Renvoyer le code</a>

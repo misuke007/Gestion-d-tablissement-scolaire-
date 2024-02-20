@@ -1,0 +1,35 @@
+<!-- <%if(success != '') { %>
+    <div class="alert alert-success"><%=success%></div>
+<% } %>
+<center><h2>Welcome</h2></center>
+
+<a href="/etudiant/liste_matiere">Liste des Matières</a><br>
+<a href="/etudiant/note_semestre">Note</a><br>
+<a href="/etudiant/edt">Emploi du temps</a><br>
+<a href="/etudiant/changePassword">Changer mon mot de passe </a><br>
+<%if(data.statut != null){ %>
+    <a href="/etudiant/CDT/liste_matiere/<%=data.FiliereId%>/<%=data.SemestreId%>/<%=data.OptionId%>">CDT</a><br>
+<%}%>    
+<a href="/etudiant/deconnexion">Se deconnecté</a> -->
+
+
+<%-include('dashboard')%>
+
+<div class="etudiantContenu">
+   
+    <div class="option-menu col-md-8">
+
+       <div class="row">
+
+        <div class="box-menu col-md-5"><div class="box-icon"><div class="border-icon"><i class="fa  fa-book"></i></div></div><a href="/etudiant/liste_matiere">Liste des Matières</a></div>
+        <div class="box-menu col-md-5"><div class="box-icon"><div class="border-icon"><i class=" fa fa-file"></i></div></div><a href="/etudiant/note_semestre">Note</a></div>
+        <div class="box-menu col-md-5"><div class="box-icon"><div class="border-icon"> <i class="fa fa-calendar"></i></div></div><a href="/etudiant/edt">Emploi du temps</a></div>
+        <div class="box-menu col-md-5"><div class="box-icon"><div class="border-icon"><i class="fa fa-lock"></i></div></div><a href="/etudiant/changePassword">Changer mon mot de passe</a></div>
+        <%if(data.statut != null){ %>
+            <a href="/etudiant/CDT/liste_matiere/<%=data.FiliereId%>/<%=data.SemestreId%>/<%=data.OptionId%>">   <div class="box-menu col-md-5"><div class="box-icon"><div class="border-icon"></div></div><a href="/etudiant/liste_matiere">CDT</a></div></a><br>
+        <%}%> 
+     
+       </div>
+
+    </div>
+</div>
