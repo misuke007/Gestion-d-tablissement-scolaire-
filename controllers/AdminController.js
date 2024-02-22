@@ -551,6 +551,7 @@ exports.profVoir = async(req, res) => {
 
     const id = req.params.id
     const user = req.user
+    let a
 
     try{
 
