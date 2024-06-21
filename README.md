@@ -3,7 +3,6 @@
 ## Description
 Cette application vise à rationaliser et améliorer la gestion quotidienne des établissements scolaires en automatisant les processus liés aux emplois du temps, aux notes, aux repêchages, et à la gestion administrative des professeurs, afin d'optimiser l'efficacité opérationnelle et de fournir une solution personnalisée aux besoins spécifiques de chaque institution éducative.
 
-Technologies utilisées : Node/Express
 
 ## Technologies Utilisées
 - **Backend :**
