@@ -1,7 +1,9 @@
 # Gestion d'etablissement scolaire
 
 ## Description
-Ce projet est une application web de gestion de tâches permettant aux utilisateurs de créer, modifier, et supprimer des tâches. Il offre également des fonctionnalités de gestion des utilisateurs et de notifications par email.
+Cette application vise à rationaliser et améliorer la gestion quotidienne des établissements scolaires en automatisant les processus liés aux emplois du temps, aux notes, aux repêchages, et à la gestion administrative des professeurs, afin d'optimiser l'efficacité opérationnelle et de fournir une solution personnalisée aux besoins spécifiques de chaque institution éducative.
+
+Technologies utilisées : Node/Express
 
 ## Technologies Utilisées
 - **Backend :**
@@ -45,6 +47,7 @@ Ce projet est une application web de gestion de tâches permettant aux utilisate
 - Gestion des notes 
 - Gestion salaire des professeurs
 - Gestion de présence des professeurs
+- Gestion de repêchage
 - Gestion des EC et UE (élément constitutif et unité d'enseignement)
 - Inscription des étudiants
 
