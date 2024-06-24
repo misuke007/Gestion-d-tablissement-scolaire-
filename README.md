@@ -10,7 +10,7 @@ Cette application vise à rationaliser et améliorer la gestion quotidienne des 
   - express js 4.18.2
   - Mysql
   - Mysql2 3.2.0
-  - Passport pour l'authentification
+  - Passport 0.6.0 pour l'authentification
 - **Frontend :**
   - EJS 3.1.9
   - Bootstrap 4.3
